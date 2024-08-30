@@ -1,0 +1,36 @@
+.card::before {
+  content: "";
+  position: absolute;
+  top: -79px;
+  right: 0;
+  background-image: url("../../../assets/img/question.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 135px;
+  height: 146px;
+}
+
+.titleWrapper {
+  max-width: 360px;
+  margin: 0 auto;
+  margin-bottom: 32px;
+}
+
+.title {
+  margin-bottom: 8px;
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 1.22222;
+  text-align: center;
+  color: #125365;
+  letter-spacing: 0.4px;
+}
+
+.text {
+  font-weight: 500;
+  font-size: 28px;
+  line-height: 1.14286;
+  text-align: center;
+  color: #125365;
+  letter-spacing: 1.16px;
+}
