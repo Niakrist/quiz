@@ -1,0 +1,37 @@
+.cl {
+  padding: 22px 32px 32px;
+}
+
+.img {
+  margin-bottom: 32px;
+  position: relative;
+}
+
+.title {
+  margin-bottom: 16px;
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-big);
+  line-height: var(--line-height-medium);
+  color: var(--primary-color);
+}
+
+.text {
+  margin-bottom: 32px;
+  font-weight: 500;
+  font-size: var(--font-size-text);
+  line-height: var(--line-height-small);
+  text-align: center;
+  color: var(--primary-color);
+}
+
+.success,
+.error {
+  font-weight: var(--font-weight-bold);
+}
+
+.success {
+  color: var(--success-color);
+}
+.error {
+  color: var(--error-color);
+}
