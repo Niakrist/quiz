@@ -24,9 +24,33 @@
   line-height: var(--line-height-medium);
   text-align: center;
   color: var(--primary-color);
+  transition: color 0.2s, border-color 0.2s;
 }
 
+.quantityQuestion:hover,
+.quantityQuestion:active {
+  color: var(--bg-button-color);
+  border-color: var(--bg-button-color);
+  caret-color: var(--bg-button-color);
+  /*  caret-width: 2px; */
+}
+/* ff9c46 */
 .buttonCount {
   width: 60px;
   height: 60px;
+  color: var(--primary-color);
+  transition: color 0.2s;
+  background-color: transparent;
+}
+.buttonCount:disabled {
+  color: var(--disabled-text-color);
+  background-color: transparent;
+}
+
+.buttonCount:hover {
+  color: var(--bg-button-color);
+}
+
+.buttonCount:disabled:hover {
+  color: var(--disabled-text-color);
 }

@@ -4,9 +4,11 @@ import { Counter } from "@/components/ui/Counter";
 
 import styles from "./Welcome.module.css";
 
-const Welcome = ({ onClick }) => {
+const Welcome = ({ onClick, onCount, count, fillListQuestions }) => {
   const handleGoQuestion = () => {
     onClick("question");
+    fillListQuestions();
+    console.log("start");
   };
 
   return (
@@ -15,8 +17,8 @@ const Welcome = ({ onClick }) => {
         <h1 className={styles.title}>Добро пожаловать</h1>
         <p className={styles.text}>на викторину по странам и столицам!</p>
       </div>
-      <Counter />
-      <Button onClick={handleGoQuestion} disabled={false}>
+      <Counter onCount={onCount} count={count} />
+      <Button onClick={handleGoQuestion} disabled={!count}>
         Начать
       </Button>
     </Container>

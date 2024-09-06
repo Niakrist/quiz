@@ -1,26 +1,54 @@
-import { useState } from "react";
-
 import styles from "./Counter.module.css";
 
-const Counter = () => {
-  const [count, setCount] = useState(18);
+const Counter = ({ onCount, count }) => {
+  const handleIncrement = () => {
+    if (count < 30) {
+      onCount(Number(count) + 1);
+    } else {
+      onCount(30);
+    }
+  };
+
+  const handleDecrement = () => {
+    if (count > 1) {
+      onCount(Number(count) - 1);
+    } else {
+      onCount(1);
+    }
+  };
+
+  const handlehangeCount = ({ target }) => {
+    onCount(target.value);
+    if (target.value === "") return;
+    if (target.value > 30) onCount(30);
+    if (target.value < 1) onCount(1);
+  };
 
   return (
     <>
       <p className={styles.text}>Выбери количество вопросов:</p>
       <div className={styles.counterQuestion}>
-        <button className={styles.buttonCount}>
+        <button
+          className={styles.buttonCount}
+          disabled={count === 1}
+          onClick={handleDecrement}>
           <svg
             width="60"
             height="60"
             viewBox="0 0 60 60"
             fill="none"
             xmlns="http://www.w3.org/2000/svg">
-            <circle cx="30" cy="30" r="23" stroke="#125365" strokeWidth="4" />
+            <circle
+              cx="30"
+              cy="30"
+              r="23"
+              stroke="currentColor"
+              strokeWidth="4"
+            />
             <path
               d="M39 30.3846C39 31.1505 38.3813 31.7692 37.6154 31.7692H22.3846C21.6187 31.7692 21 31.1505 21 30.3846C21 29.6187 21.6187 29 22.3846 29H37.6154C38.3813 29 39 29.6187 39 30.3846Z"
-              fill="#125365"
-              stroke="#125365"
+              fill="currentColor"
+              stroke="currentColor"
             />
           </svg>
         </button>
@@ -28,20 +56,29 @@ const Counter = () => {
           className={styles.quantityQuestion}
           type="number"
           value={count}
-          onChange={(e) => setCount(e.target.value)}
+          onChange={handlehangeCount}
         />
-        <button className={styles.buttonCount}>
+        <button
+          className={styles.buttonCount}
+          disabled={count === 30}
+          onClick={handleIncrement}>
           <svg
             width="60"
             height="60"
             viewBox="0 0 60 60"
             fill="none"
             xmlns="http://www.w3.org/2000/svg">
-            <circle cx="30" cy="30" r="23" stroke="#125365" strokeWidth="4" />
+            <circle
+              cx="30"
+              cy="30"
+              r="23"
+              stroke="currentColor"
+              strokeWidth="4"
+            />
             <path
               d="M31.3846 22.3846C31.3846 21.6187 30.7659 21 30 21C29.2341 21 28.6154 21.6187 28.6154 22.3846V28.6154H22.3846C21.6187 28.6154 21 29.2341 21 30C21 30.7659 21.6187 31.3846 22.3846 31.3846H28.6154V37.6154C28.6154 38.3813 29.2341 39 30 39C30.7659 39 31.3846 38.3813 31.3846 37.6154V31.3846H37.6154C38.3813 31.3846 39 30.7659 39 30C39 29.2341 38.3813 28.6154 37.6154 28.6154H31.3846V22.3846Z"
-              fill="#125365"
-              stroke="#125365"
+              fill="currentColor"
+              stroke="currentColor"
             />
           </svg>
         </button>

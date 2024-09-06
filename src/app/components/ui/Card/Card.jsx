@@ -1,17 +1,11 @@
 import { Button } from "@/components/ui/Button";
 
-import flagSrc from "@/assets/img/flag.png";
 import styles from "./Card.module.css";
 import { useState } from "react";
+import { Answer } from "@/components/ui/Answer";
+import { Question } from "@/components/ui/Question";
 
-const quests = [
-  { id: "1", name: "Камерун" },
-  { id: "2", name: "Нигерия" },
-  { id: "3", name: "Центрально-Африканская Республика" },
-  { id: "4", name: "Гаити" },
-];
-
-const Card = ({ onClick }) => {
+const Card = ({ onClick, count, listQuestions }) => {
   const [isCheck, setIsChek] = useState("");
 
   const handleGoWelcome = () => {
@@ -24,8 +18,7 @@ const Card = ({ onClick }) => {
   return (
     <>
       <div className={styles.question}>
-        <img className={styles.img} src={flagSrc} alt="Флаг" />
-        <h2 className={styles.title}>Флаг какой страны изображен?</h2>
+        <Question listQuestions={listQuestions[0]} />
         <button onClick={handleGoWelcome} className={styles.closeBtn}>
           <svg
             width="40"
@@ -48,36 +41,16 @@ const Card = ({ onClick }) => {
           </svg>
         </button>
       </div>
-      <ul className={styles.flagList}>
-        {quests.map((quest) => (
-          <li key={quest.id} className={styles.flagItem}>
-            <label
-              className={
-                styles.answer +
-                " " +
-                (isCheck === quest.name ? styles.answerTrue : "")
-              }
-              htmlFor={quest.id + quest.name}>
-              <span className={styles.num}>{quest.id}</span>
-              {quest.name}
-            </label>
-            <input
-              className={styles.hideCircle}
-              type="radio"
-              onChange={() => setIsChek(quest.name)}
-              value={isCheck}
-              checked={isCheck === quest.name}
-              name="flag"
-              id={quest.id + quest.name}
-            />
-          </li>
-        ))}
-      </ul>
+      <Answer
+        isCheck={isCheck}
+        setIsChek={setIsChek}
+        listQuestions={listQuestions[0]}
+      />
       <div className={styles.wrapper}>
         <Button onClick={handleGoResult} disabled={!isCheck}>
           Ответить
         </Button>
-        <span className={styles.score}>1 / 18</span>
+        <span className={styles.score}>1 / {count}</span>
       </div>
     </>
   );
