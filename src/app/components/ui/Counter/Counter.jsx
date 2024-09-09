@@ -1,6 +1,7 @@
 import styles from "./Counter.module.css";
 
 const Counter = ({ onCount, count }) => {
+  // Увеличение счетчика
   const handleIncrement = () => {
     if (count < 30) {
       onCount(Number(count) + 1);
@@ -8,7 +9,7 @@ const Counter = ({ onCount, count }) => {
       onCount(30);
     }
   };
-
+  // Уменьшение счетчика
   const handleDecrement = () => {
     if (count > 1) {
       onCount(Number(count) - 1);
@@ -17,7 +18,9 @@ const Counter = ({ onCount, count }) => {
     }
   };
 
-  const handlehangeCount = ({ target }) => {
+  // Поле для ввода количества вопросов через Input с ограничением от 1 до 30
+  // И возможностью оставить только курсор, чтобы кнопка и клавиша Enter стали disabled
+  const handleChangeCount = ({ target }) => {
     onCount(target.value);
     if (target.value === "") return;
     if (target.value > 30) onCount(30);
@@ -56,7 +59,7 @@ const Counter = ({ onCount, count }) => {
           className={styles.quantityQuestion}
           type="number"
           value={count}
-          onChange={handlehangeCount}
+          onChange={handleChangeCount}
         />
         <button
           className={styles.buttonCount}

@@ -5,7 +5,7 @@ const RadioButton = ({ answer, isCheck, setIsChek, index }) => {
     <li className={styles.flagItem}>
       <label
         className={
-          styles.answer + " " + (isCheck === answer ? styles.answerTrue : "")
+          styles.answer + " " + (isCheck === answer ? styles.answerChange : "")
         }
         htmlFor={answer}>
         <span className={styles.num}>{index + 1}</span>

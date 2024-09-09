@@ -26,7 +26,7 @@
   color: var(--primary-color);
 }
 
-.answerTrue {
+.answerChange {
   background-color: var(--bg-button-disabled-color);
 }
 

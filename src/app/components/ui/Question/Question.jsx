@@ -1,12 +1,12 @@
 import React from "react";
 import styles from "./Question.module.css";
 
-const Question = ({ listQuestions }) => {
+const Question = ({ listQuestion }) => {
   return (
     <>
       <img
         className={styles.img}
-        src={listQuestions.flag}
+        src={listQuestion.flag}
         alt="Загаданный флаг страны"
       />
       <h2 className={styles.title}>Флаг какой страны изображен?</h2>

@@ -8,9 +8,12 @@ import { Question } from "@/components/ui/Question";
 const Card = ({ onClick, count, listQuestions }) => {
   const [isCheck, setIsChek] = useState("");
 
+  // Передаётся в кнопку "крестик" для переход на главную страницу
   const handleGoWelcome = () => {
     onClick("welcome");
   };
+
+  // Передаётся в кнопку "Ответить", сейчас по ней сразу же осуществляется переход на страницу с результатом
   const handleGoResult = () => {
     onClick("result");
   };
@@ -18,7 +21,8 @@ const Card = ({ onClick, count, listQuestions }) => {
   return (
     <>
       <div className={styles.question}>
-        <Question listQuestions={listQuestions[0]} />
+        {/* Компонент в себя принимает только первый вопрос  */}
+        <Question listQuestion={listQuestions[0]} />
         <button onClick={handleGoWelcome} className={styles.closeBtn}>
           <svg
             width="40"
@@ -41,10 +45,11 @@ const Card = ({ onClick, count, listQuestions }) => {
           </svg>
         </button>
       </div>
+      {/* Компонент в себя принимает 4-е варианта ответа только для первого вопроса  */}
       <Answer
         isCheck={isCheck}
         setIsChek={setIsChek}
-        listQuestions={listQuestions[0]}
+        listQuestion={listQuestions[0]}
       />
       <div className={styles.wrapper}>
         <Button onClick={handleGoResult} disabled={!isCheck}>
