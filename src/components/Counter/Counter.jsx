@@ -14,6 +14,7 @@ const Counter = () => {
       <div className={styles.counterQuestion}>
         <button
           className={styles.buttonCount}
+          disabled={count === 1}
           onClick={() => handleCount(Number(count - 1))}>
           <svg
             width="60"
@@ -43,6 +44,7 @@ const Counter = () => {
         />
         <button
           className={styles.buttonCount}
+          disabled={count === 30}
           onClick={() => handleCount(Number(count) + 1)}>
           <svg
             width="60"
