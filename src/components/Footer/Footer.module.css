@@ -1,0 +1,31 @@
+.footer {
+  font-weight: var(--font-weight-regular);
+  font-size: 14px;
+  line-height: var(--line-height-small);
+  color: var(--secondaty-color);
+}
+
+.footer a {
+  text-transform: uppercase;
+  position: relative;
+}
+
+.footer a::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  width: 100%;
+  height: 1px;
+  background-color: var(--secondaty-color);
+}
+
+.footer a:hover {
+  transition: color 0.2s ease;
+  color: var(--bg-button-color);
+}
+
+.footer a:hover::before {
+  transition: background-color 0.2s ease;
+  background-color: var(--bg-button-color);
+}

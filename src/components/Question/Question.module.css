@@ -1,0 +1,14 @@
+.img {
+  margin-bottom: 16px;
+  max-width: 90px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.title {
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-text);
+  line-height: var(--line-height-small);
+  color: var(--primary-color);
+}

@@ -1,0 +1,35 @@
+.titleWrapper {
+  max-width: 360px;
+  margin: 0 auto;
+  margin-bottom: 32px;
+  position: relative;
+}
+
+.titleWrapper::before {
+  content: "";
+  position: absolute;
+  top: -110px;
+  right: -115px;
+  background-image: url("../../assets/images/question.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 135px;
+  height: 146px;
+}
+
+.title {
+  margin-bottom: 8px;
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-big);
+  line-height: var(--line-height-medium);
+  text-align: center;
+  color: var(--primary-color);
+}
+
+.text {
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-text);
+  line-height: var(--line-height-small);
+  text-align: center;
+  color: var(--primary-color);
+}
