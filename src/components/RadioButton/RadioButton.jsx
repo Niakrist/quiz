@@ -1,5 +1,4 @@
 import React from "react";
-import { useEffect } from "react";
 import styles from "./RadioButton.module.css";
 
 const RadioButton = ({ answer, index, check, setCheck }) => {

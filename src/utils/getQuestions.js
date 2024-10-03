@@ -1,9 +1,10 @@
-import { questions, countries } from "../data/quizzQuestions.json";
+import { questions, countries } from "../data/quizQuestions.json";
 import { getShuffleArray } from "./getShuffleArray";
 
 export const getQuestions = (count) => {
   // Получаем перемешенный список questions с ответами заданного количества
   const shuffleQuestions = getShuffleArray(questions).splice(0, count);
+
   const questionsList = [];
 
   // Перебираем каждый вариант ответа

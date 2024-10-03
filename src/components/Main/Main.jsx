@@ -1,5 +1,5 @@
 import React from "react";
-import { RESULT_PAGE } from "../../constans";
+import { RESULT_PAGE } from "../../constants";
 import { useQuiz } from "../../hooks/useQuiz";
 import styles from "./Main.module.css";
 

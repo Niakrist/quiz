@@ -1,12 +1,9 @@
 import React from "react";
-
-import { useContext } from "react";
-import { QuizContext } from "../../context/QuizContext";
-
+import { useQuiz } from "../../hooks/useQuiz";
 import styles from "./Counter.module.css";
 
 const Counter = () => {
-  const { count, handleCount } = useContext(QuizContext);
+  const { count, handleCount } = useQuiz();
 
   return (
     <>
@@ -38,7 +35,7 @@ const Counter = () => {
         </button>
         <input
           className={styles.quantityQuestion}
-          type="number"
+          type="text"
           value={count}
           onChange={(e) => handleCount(e.target.value)}
         />

@@ -10,6 +10,11 @@ export const QuizContextProvider = ({ children }) => {
   const { page, handleChangePage } = useChangePage();
   const [questionsList, setQuestionsList] = useState();
   const [check, setCheck] = useState("");
+  const [score, setScore] = useState({
+    trueScore: 0,
+    falseScore: 0,
+    answerCount: 1,
+  });
 
   return (
     <QuizContext.Provider
@@ -22,6 +27,8 @@ export const QuizContextProvider = ({ children }) => {
         setQuestionsList,
         check,
         setCheck,
+        score,
+        setScore,
       }}>
       {children}
     </QuizContext.Provider>

@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import { useEffect } from "react";
+import React from "react";
 import { useQuiz } from "../../hooks/useQuiz";
 import { RadioButton } from "../RadioButton";
 import styles from "./Answer.module.css";

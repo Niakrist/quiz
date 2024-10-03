@@ -1,15 +1,14 @@
-import { useContext } from "react";
 import { Footer } from "./components/Footer";
 import { Header } from "./components/Header";
 import { Main } from "./components/Main";
 import { QuestionPage } from "./pages/QuestionPage";
 import { ResultPage } from "./pages/ResultPage";
 import { WelcomePage } from "./pages/WelcomePage";
-import { QuizContext } from "./context/QuizContext";
-import { QUEST_PAGE, RESULT_PAGE, WELCOME_PAGE } from "./constans";
+import { QUEST_PAGE, RESULT_PAGE, WELCOME_PAGE } from "./constants";
+import { useQuiz } from "./hooks/useQuiz";
 
 const App = () => {
-  const { page } = useContext(QuizContext);
+  const { page } = useQuiz();
 
   return (
     <>

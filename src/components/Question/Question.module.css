@@ -3,7 +3,8 @@
   max-width: 90px;
   height: 60px;
   object-fit: cover;
-  border-radius: 10px;
+  border-radius: var(--border-radius-standart);
+  user-select: none;
 }
 
 .title {

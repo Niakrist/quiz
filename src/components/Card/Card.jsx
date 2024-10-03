@@ -1,26 +1,120 @@
-import React from "react";
-import { WELCOME_PAGE } from "../../constans";
+import React, { useState } from "react";
+import { RESULT_PAGE, WELCOME_PAGE } from "../../constants";
+import { useKeyPress } from "../../hooks/useKeyPress";
 import { useQuiz } from "../../hooks/useQuiz";
 import { Answer } from "../Answer";
 import { Button } from "../Button";
-import Question from "../Question/Question";
+import { Question } from "../Question";
 import styles from "./Card.module.css";
+import { useEffect } from "react";
+import { getShuffleArray } from "../../utils/getShuffleArray.js";
+import { useCountries } from "../../hooks/useCountries";
+import { useQuestion } from "../../hooks/useQuestion";
+const mok = [
+  {
+    answers: ["Сан-Марино", "Афганистан", "Россия", "Кабо-Верде"],
+    correctAnswer: "Кабо-Верде",
+    flag: "https://upload.wikimedia.org/wikipedia/commons/3/38/Flag_of_Cape_Verde.svg",
+    question: "Флаг какой страны изображен?",
+  },
+];
 
 const Card = () => {
-  const { questionsList, handleChangePage, count, check, setCheck } = useQuiz();
-  const handleClick = () => {
-    handleChangePage(WELCOME_PAGE);
-    setCheck("");
+  const {
+    questionsList,
+    setQuestionsList,
+    handleChangePage,
+    count,
+    handleCount,
+    check,
+    setCheck,
+    score,
+    setScore,
+  } = useQuiz();
+
+  const [curentQuest, setCurrentQuest] = useState();
+  // const [newCountries, setNewCountries] = useState(() =>
+  //   getShuffleArray(countries)
+  // );
+
+  const getQuestion = () => {
+    setCurrentQuest({
+      ...questionsList[0],
+      answers: getShuffleArray([
+        questionsList[0]?.correctAnswer,
+        ...newCountries
+          .filter((c) => c !== questionsList[0]?.correctAnswer)
+          .slice(0, 3),
+      ]),
+    });
   };
 
-  console.log(questionsList);
+  // const getCountries = () => {
+  //   setNewCountries(
+  //     getShuffleArray(newCountries).filter(
+  //       (country) => country !== curentQuest?.correctAnswer
+  //     )
+  //   );
+  // };
+
+  useEffect(() => {
+    getQuestion();
+  }, [questionsList]);
+
+  // useEffect(() => {
+  //   getCountries();
+  // }, [curentQuest]);
+
+  // const curentQuest = useQuestion(questionsList, newCountries);
+  const newCountries = useCountries(curentQuest);
+
+  const saveAnswer = () => {
+    if (check === curentQuest.correctAnswer) {
+      setScore({
+        ...score,
+        trueScore: ++score.trueScore,
+        answerCount: ++score.answerCount,
+      });
+    } else {
+      setScore({
+        ...score,
+        falseScore: ++score.falseScore,
+        answerCount: ++score.answerCount,
+      });
+    }
+  };
+
+  const backWelcome = () => {
+    handleChangePage(WELCOME_PAGE);
+    setCheck("");
+    setScore({
+      trueScore: 0,
+      falseScore: 0,
+      answerCount: 1,
+    });
+    handleCount(18);
+  };
+
+  const handleClick = () => {
+    if (questionsList.length > 1) {
+      setQuestionsList(questionsList.slice(1));
+      setCheck("");
+      saveAnswer();
+    } else {
+      saveAnswer();
+      handleChangePage(RESULT_PAGE);
+    }
+  };
+
+  useKeyPress({ disabled: !check }, handleClick);
+
+  if (!curentQuest?.correctAnswer) return;
 
   return (
     <>
       <div className={styles.question}>
-        {/* Компонент в себя принимает только первый вопрос  */}
-        <Question listQuestions={questionsList[0]} />
-        <button className={styles.closeBtn} onClick={handleClick}>
+        <Question listQuestions={curentQuest} />
+        <button className={styles.closeBtn} onClick={backWelcome}>
           <svg
             width="40"
             height="40"
@@ -42,11 +136,15 @@ const Card = () => {
           </svg>
         </button>
       </div>
-      {/* Компонент в себя принимает 4-е варианта ответа только для первого вопроса  */}
-      <Answer question={questionsList[0]} />
+      <Answer question={curentQuest} score={score} setScore={setScore} />
+
       <div className={styles.wrapper}>
-        <Button disabled={!check}>Ответить</Button>
-        <span className={styles.score}>1 / {count}</span>
+        <Button disabled={!check} onClick={handleClick}>
+          Ответить
+        </Button>
+        <span className={styles.score}>
+          {score.answerCount} / {count}
+        </span>
       </div>
     </>
   );

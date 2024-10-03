@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { WELCOME_PAGE } from "../constans";
+import { WELCOME_PAGE } from "../constants";
 
 export const useChangePage = () => {
   const [page, setPage] = useState(WELCOME_PAGE);

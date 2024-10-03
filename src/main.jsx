@@ -5,9 +5,7 @@ import { QuizContextProvider } from "./context/QuizContext.jsx";
 import "./index.css";
 
 createRoot(document.getElementById("root")).render(
-  <StrictMode>
-    <QuizContextProvider>
-      <App />
-    </QuizContextProvider>
-  </StrictMode>
+  <QuizContextProvider>
+    <App />
+  </QuizContextProvider>
 );
