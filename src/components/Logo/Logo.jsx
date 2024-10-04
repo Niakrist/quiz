@@ -1,8 +1,8 @@
 import React from "react";
-import styles from "./Logo.module.css";
 import logoSrc from "../../assets/images/logo.svg";
 import { useQuiz } from "../../hooks/useQuiz";
 import { WELCOME_PAGE } from "../../constants";
+import styles from "./Logo.module.css";
 
 const Logo = () => {
   const { handleChangePage, setCheck, handleCount } = useQuiz();

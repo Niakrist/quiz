@@ -1,5 +1,6 @@
 import { useState } from "react";
 
+// Хук для количества вопросов
 export const useCountHook = () => {
   const [count, setCount] = useState(5);
 

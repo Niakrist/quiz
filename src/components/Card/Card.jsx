@@ -1,23 +1,17 @@
 import React, { useState } from "react";
-import { RESULT_PAGE, WELCOME_PAGE } from "../../constants";
-import { useKeyPress } from "../../hooks/useKeyPress";
-import { useQuiz } from "../../hooks/useQuiz";
 import { Answer } from "../Answer";
 import { Button } from "../Button";
 import { Question } from "../Question";
+
+import { useCurentQuest } from "../../hooks/useCurentQuest";
+import { useQuiz } from "../../hooks/useQuiz";
+import { useKeyPress } from "../../hooks/useKeyPress";
+import { calculateScore } from "../../utils/calculateScore";
+
 import styles from "./Card.module.css";
-import { useEffect } from "react";
-import { getShuffleArray } from "../../utils/getShuffleArray.js";
-import { useCountries } from "../../hooks/useCountries";
-import { useQuestion } from "../../hooks/useQuestion";
-const mok = [
-  {
-    answers: ["Сан-Марино", "Афганистан", "Россия", "Кабо-Верде"],
-    correctAnswer: "Кабо-Верде",
-    flag: "https://upload.wikimedia.org/wikipedia/commons/3/38/Flag_of_Cape_Verde.svg",
-    question: "Флаг какой страны изображен?",
-  },
-];
+import { RESULT_PAGE, WELCOME_PAGE } from "../../constants";
+import { countries } from "../../data/quizQuestions.json";
+import { getCountries } from "../../utils/getCountries";
 
 const Card = () => {
   const {
@@ -30,59 +24,12 @@ const Card = () => {
     setCheck,
     score,
     setScore,
+    isCheckAnswer,
+    setIsCheckAnswer,
+    setNewCountries,
   } = useQuiz();
 
-  const [curentQuest, setCurrentQuest] = useState();
-  // const [newCountries, setNewCountries] = useState(() =>
-  //   getShuffleArray(countries)
-  // );
-
-  const getQuestion = () => {
-    setCurrentQuest({
-      ...questionsList[0],
-      answers: getShuffleArray([
-        questionsList[0]?.correctAnswer,
-        ...newCountries
-          .filter((c) => c !== questionsList[0]?.correctAnswer)
-          .slice(0, 3),
-      ]),
-    });
-  };
-
-  // const getCountries = () => {
-  //   setNewCountries(
-  //     getShuffleArray(newCountries).filter(
-  //       (country) => country !== curentQuest?.correctAnswer
-  //     )
-  //   );
-  // };
-
-  useEffect(() => {
-    getQuestion();
-  }, [questionsList]);
-
-  // useEffect(() => {
-  //   getCountries();
-  // }, [curentQuest]);
-
-  // const curentQuest = useQuestion(questionsList, newCountries);
-  const newCountries = useCountries(curentQuest);
-
-  const saveAnswer = () => {
-    if (check === curentQuest.correctAnswer) {
-      setScore({
-        ...score,
-        trueScore: ++score.trueScore,
-        answerCount: ++score.answerCount,
-      });
-    } else {
-      setScore({
-        ...score,
-        falseScore: ++score.falseScore,
-        answerCount: ++score.answerCount,
-      });
-    }
-  };
+  const curentQuest = useCurentQuest(questionsList);
 
   const backWelcome = () => {
     handleChangePage(WELCOME_PAGE);
@@ -93,15 +40,23 @@ const Card = () => {
       answerCount: 1,
     });
     handleCount(18);
+    setIsCheckAnswer(false);
+    setNewCountries(countries);
   };
 
   const handleClick = () => {
     if (questionsList.length > 1) {
-      setQuestionsList(questionsList.slice(1));
-      setCheck("");
-      saveAnswer();
+      if (isCheckAnswer) {
+        setQuestionsList(questionsList.slice(1));
+        setCheck("");
+        calculateScore(check, score, setScore, curentQuest);
+        setIsCheckAnswer(false);
+      } else {
+        setIsCheckAnswer(true);
+        getCountries(setNewCountries, curentQuest, check);
+      }
     } else {
-      saveAnswer();
+      calculateScore(check, score, setScore, curentQuest);
       handleChangePage(RESULT_PAGE);
     }
   };
@@ -136,11 +91,11 @@ const Card = () => {
           </svg>
         </button>
       </div>
-      <Answer question={curentQuest} score={score} setScore={setScore} />
+      <Answer curentQuest={curentQuest} />
 
       <div className={styles.wrapper}>
         <Button disabled={!check} onClick={handleClick}>
-          Ответить
+          {isCheckAnswer ? "Дальше" : "Ответить"}
         </Button>
         <span className={styles.score}>
           {score.answerCount} / {count}

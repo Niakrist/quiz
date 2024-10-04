@@ -1,16 +1,23 @@
 import React from "react";
-
-import styles from "./ResultPage.module.css";
-import resultSrc from "../../assets/images/result.png";
 import { Button } from "../../components/Button";
+import resultSrc from "../../assets/images/result.png";
 import { useQuiz } from "../../hooks/useQuiz";
-import { WELCOME_PAGE } from "../../constants";
 import { useKeyPress } from "../../hooks/useKeyPress";
 import { getEndWordSuccess, getEndWordFail } from "../../utils/getEndWord";
+import { WELCOME_PAGE } from "../../constants";
+import { countries } from "../../data/quizQuestions.json";
+import styles from "./ResultPage.module.css";
 
 const ResultPage = () => {
-  const { handleChangePage, setCheck, handleCount, score, setScore } =
-    useQuiz();
+  const {
+    handleChangePage,
+    setCheck,
+    handleCount,
+    score,
+    setScore,
+    setIsCheckAnswer,
+    setNewCountries,
+  } = useQuiz();
 
   const generateResult = () => {
     if (score.trueScore === 0) {
@@ -47,6 +54,8 @@ const ResultPage = () => {
       falseScore: 0,
       answerCount: 1,
     });
+    setIsCheckAnswer(false);
+    setNewCountries(countries);
   };
 
   useKeyPress({ disabled: false }, handleClick);

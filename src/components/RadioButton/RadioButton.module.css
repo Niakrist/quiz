@@ -10,7 +10,7 @@
 }
 
 .answer {
-  display: block;
+  display: flex;
 
   text-align: left;
   width: 100%;
@@ -22,10 +22,46 @@
   font-size: var(--font-size-medium);
   line-height: var(--line-height-standart);
   color: var(--primary-color);
+  transition: background-color 0.2s, color 0.2s, border 0.2s;
 }
 
-.answerChange {
-  background-color: var(--bg-button-disabled-color);
+.answer:hover,
+.answerChoose {
+  background-color: var(--bg-button-color);
+  border: 4px solid var(--bg-button-color);
+  color: var(--secondaty-color);
+}
+
+.answerSuccess {
+  background-color: var(--success-color);
+  border: 4px solid var(--success-color);
+  color: var(--secondaty-color);
+  position: relative;
+}
+
+.answerError {
+  background-color: var(--error-color);
+  border: 4px solid var(--error-color);
+  color: var(--secondaty-color);
+  position: relative;
+}
+
+.answerSuccess::before,
+.answerError::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 16px;
+  transform: translateY(-50%);
+  width: 24px;
+  height: 24px;
+}
+
+.answerSuccess::before {
+  background-image: url("../../assets/icons/success-answer.svg");
+}
+.answerError::before {
+  background-image: url("../../assets/icons/error-answer.svg");
 }
 
 .hideCircle {

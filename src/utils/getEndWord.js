@@ -1,3 +1,5 @@
+// Функции для корректных окончаний на странице с результатами
+
 export const getEndWordSuccess = (num) => {
   if (num >= 5) return " вопросов ";
   const lastNum = Number(String(num).slice(-1));

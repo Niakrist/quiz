@@ -4,8 +4,8 @@ import { Main } from "./components/Main";
 import { QuestionPage } from "./pages/QuestionPage";
 import { ResultPage } from "./pages/ResultPage";
 import { WelcomePage } from "./pages/WelcomePage";
-import { QUEST_PAGE, RESULT_PAGE, WELCOME_PAGE } from "./constants";
 import { useQuiz } from "./hooks/useQuiz";
+import { QUEST_PAGE, RESULT_PAGE, WELCOME_PAGE } from "./constants";
 
 const App = () => {
   const { page } = useQuiz();

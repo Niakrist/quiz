@@ -1,18 +1,17 @@
 import React from "react";
 import { Button } from "../../components/Button";
 import { Counter } from "../../components/Counter";
-import { QUEST_PAGE } from "../../constants";
 import { useKeyPress } from "../../hooks/useKeyPress";
 import { useQuiz } from "../../hooks/useQuiz";
 import { getShuffleArray } from "../../utils/getShuffleArray.js";
+import { QUEST_PAGE } from "../../constants";
+import { questions } from "../../data/quizQuestions.json";
 import styles from "./WelcomePage.module.css";
-import { questions, countries } from "../../data/quizQuestions.json";
 
 const WelcomePage = () => {
   const { count, handleChangePage, setQuestionsList } = useQuiz();
 
   const handleClick = () => {
-    // Перемешиваем и записываем заданное количество вопросов (questions)
     setQuestionsList(getShuffleArray(questions).slice(0, count));
     handleChangePage(QUEST_PAGE);
   };

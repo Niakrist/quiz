@@ -1,6 +1,6 @@
 import React from "react";
-import { RESULT_PAGE } from "../../constants";
 import { useQuiz } from "../../hooks/useQuiz";
+import { RESULT_PAGE } from "../../constants";
 import styles from "./Main.module.css";
 
 const Main = ({ children }) => {
