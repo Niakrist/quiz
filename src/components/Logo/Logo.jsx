@@ -1,16 +1,12 @@
-import React from "react";
-import logoSrc from "../../assets/images/logo.svg";
-import { useQuiz } from "../../hooks/useQuiz";
-import { WELCOME_PAGE } from "../../constants";
+import { useQuiz } from "@/hooks";
+import logoSrc from "@/assets/icons/logo.svg";
 import styles from "./Logo.module.css";
 
 const Logo = () => {
-  const { handleChangePage, setCheck, handleCount } = useQuiz();
+  const { backWelcome } = useQuiz();
   const handleClick = (e) => {
     e.preventDefault();
-    setCheck("");
-    handleChangePage(WELCOME_PAGE);
-    handleCount(18);
+    backWelcome();
   };
   return (
     <a className={styles.logoLink} href="#" onClick={handleClick}>

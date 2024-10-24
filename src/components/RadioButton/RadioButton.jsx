@@ -1,19 +1,22 @@
-import React from "react";
-import { useQuiz } from "../../hooks/useQuiz";
-import { getAnswerClass } from "../../utils/getAnswerClass";
+import { useQuiz } from "@/hooks";
+import { getAnswerClass, clsx } from "@/utils";
 import styles from "./RadioButton.module.css";
 
-const RadioButton = ({ answer, index, check, setCheck, correctAnswer }) => {
-  const { isCheckAnswer } = useQuiz();
+const RadioButton = ({ answer, index, correctAnswer }) => {
+  const { isCheckAnswer, check, setCheck, isPreload } = useQuiz();
+
+  const handleClick = (answer) => {
+    setCheck(answer);
+  };
 
   return (
-    <li className={styles.flagItem}>
+    <>
       <label
-        className={
-          styles.answer +
-          " " +
-          getAnswerClass(styles, isCheckAnswer, check, correctAnswer, answer)
-        }
+        className={clsx(
+          styles.answer,
+          getAnswerClass(styles, isCheckAnswer, check, correctAnswer, answer),
+          isPreload && styles.afterCheck
+        )}
         htmlFor={answer}>
         <span className={styles.num}>{index + 1}</span>
         {answer}
@@ -24,10 +27,10 @@ const RadioButton = ({ answer, index, check, setCheck, correctAnswer }) => {
         name="flag"
         id={answer}
         check={check}
-        onClick={() => setCheck(answer)}
+        onClick={() => handleClick(answer)}
         disabled={isCheckAnswer}
       />
-    </li>
+    </>
   );
 };
 

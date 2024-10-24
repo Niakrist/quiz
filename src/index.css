@@ -45,6 +45,7 @@
 
 body {
   width: 100%;
+  min-width: 1280px;
   min-height: 100vh;
   background: linear-gradient(
     45deg,
@@ -162,6 +163,28 @@ label {
 
 legend {
   display: block;
+}
+
+svg {
+  width: inherit;
+  height: inherit;
+}
+
+/**
+   Приводим к единому цвету svg-элементы
+  */
+svg *[fill] {
+  fill: currentColor;
+}
+svg *[stroke] {
+  stroke: currentColor;
+}
+
+/**
+     Чиним баг задержки смены цвета при взаимодействии с svg-элементами
+    */
+svg * {
+  transition-property: fill, stroke;
 }
 
 #root {

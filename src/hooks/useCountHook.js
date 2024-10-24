@@ -1,7 +1,8 @@
 import { useState } from "react";
+import { questions } from "@/data/quizQuestions.json";
 
 // Хук для количества вопросов
-export const useCountHook = () => {
+const useCountHook = () => {
   const [count, setCount] = useState(5);
 
   const handleCount = (num) => {
@@ -11,8 +12,8 @@ export const useCountHook = () => {
     const regEx = /^[0-9\b]+$/;
     if (regEx.test(num)) {
       setCount(num);
-      if (num > 30) {
-        setCount(30);
+      if (num > questions.length) {
+        setCount(questions.length);
       }
       if (num < 1) {
         setCount(1);
@@ -21,3 +22,5 @@ export const useCountHook = () => {
   };
   return { count, handleCount };
 };
+
+export default useCountHook;

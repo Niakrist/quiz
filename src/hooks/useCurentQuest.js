@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
-import { getShuffleArray } from "../utils/getShuffleArray.js";
-import { useQuiz } from "./useQuiz";
+import { useQuiz } from "@/hooks";
+import { getShuffleArray } from "@/utils";
 
 // Хук для получния нового вопроса
-export const useCurentQuest = (questionsList) => {
+const useCurentQuest = (questionsList) => {
   const { newCountries, setNewCountries } = useQuiz();
-  const [curentQuest, setCurrentQuest] = useState();
+  const [currentQuestion, setCurrentQuest] = useState();
 
   const getQuestion = () => {
     setCurrentQuest({
@@ -19,8 +19,6 @@ export const useCurentQuest = (questionsList) => {
     });
   };
 
-  console.log(newCountries);
-
   const getCountries = () => {
     setNewCountries(getShuffleArray(newCountries));
   };
@@ -31,7 +29,9 @@ export const useCurentQuest = (questionsList) => {
 
   useEffect(() => {
     getCountries();
-  }, [curentQuest]);
+  }, [currentQuestion]);
 
-  return curentQuest;
+  return currentQuestion;
 };
+
+export default useCurentQuest;

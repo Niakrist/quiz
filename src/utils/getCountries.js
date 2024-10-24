@@ -1,15 +1,25 @@
-import { getShuffleArray } from "./getShuffleArray";
+import { getShuffleArray } from "@/utils";
 
-// Функция перемешивает массив со странами и в случае правильного ответа удаляет страну из массива стран
-export const getCountries = (setNewCountries, curentQuest, check) => {
+const getCountries = (setNewCountries, currentQuestion) => {
+  // Перемешивает массив со странами
   setNewCountries((prevCountries) => getShuffleArray(prevCountries));
 
-  if (curentQuest?.correctAnswer === check) {
-    console.log("+++");
-    setNewCountries((prevCountries) =>
-      getShuffleArray(prevCountries).filter(
-        (country) => country !== curentQuest?.correctAnswer
-      )
-    );
-  }
+  //  В случае ПРАВИЛЬНОГО и НЕПРАВИЛЬНОГО ответа удаляет загаданную страну из массива стран
+  setNewCountries((prevCountries) =>
+    getShuffleArray(prevCountries).filter(
+      (country) => country !== currentQuestion?.correctAnswer
+    )
+  );
+
+  // В случае ПРАВИЛЬНОГО ответа удаляет загаданную страну из массива стран
+
+  // if (currentQuestion?.correctAnswer === check) {
+  //   setNewCountries((prevCountries) =>
+  //     getShuffleArray(prevCountries).filter(
+  //       (country) => country !== currentQuestion?.correctAnswer
+  //     )
+  //   );
+  // }
 };
+
+export default getCountries;

@@ -1,15 +1,16 @@
-import React from "react";
-import { useQuiz } from "../../hooks/useQuiz";
-import { RESULT_PAGE } from "../../constants";
+import { useQuiz } from "@/hooks";
+import { clsx } from "@/utils";
+import { RESULT_PAGE } from "@/constants";
 import styles from "./Main.module.css";
 
 const Main = ({ children }) => {
   const { page } = useQuiz();
   return (
     <main
-      className={`${styles.wrapper} ${
+      className={clsx(
+        styles.wrapper,
         page === RESULT_PAGE && styles.wrapperResult
-      }`}>
+      )}>
       {children}
     </main>
   );

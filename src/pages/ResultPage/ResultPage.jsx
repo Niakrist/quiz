@@ -1,23 +1,11 @@
-import React from "react";
-import { Button } from "../../components/Button";
-import resultSrc from "../../assets/images/result.png";
-import { useQuiz } from "../../hooks/useQuiz";
-import { useKeyPress } from "../../hooks/useKeyPress";
-import { getEndWordSuccess, getEndWordFail } from "../../utils/getEndWord";
-import { WELCOME_PAGE } from "../../constants";
-import { countries } from "../../data/quizQuestions.json";
+import { Button } from "@/components";
+import { useQuiz, useKeyPress } from "@/hooks";
+import { getEndWordSuccess, getEndWordFail } from "@/utils";
+import resultSrc from "@/assets/images/result.png";
 import styles from "./ResultPage.module.css";
 
 const ResultPage = () => {
-  const {
-    handleChangePage,
-    setCheck,
-    handleCount,
-    score,
-    setScore,
-    setIsCheckAnswer,
-    setNewCountries,
-  } = useQuiz();
+  const { score, backWelcome } = useQuiz();
 
   const generateResult = () => {
     if (score.trueScore === 0) {
@@ -45,27 +33,14 @@ const ResultPage = () => {
     );
   };
 
-  const handleClick = () => {
-    setCheck("");
-    handleCount(18);
-    handleChangePage(WELCOME_PAGE);
-    setScore({
-      trueScore: 0,
-      falseScore: 0,
-      answerCount: 1,
-    });
-    setIsCheckAnswer(false);
-    setNewCountries(countries);
-  };
-
-  useKeyPress({ disabled: false }, handleClick);
+  useKeyPress({ disabled: false }, backWelcome);
 
   return (
     <>
       <img className={styles.img} src={resultSrc} alt="Иконка результат" />
       <h1 className={styles.title}>Результат</h1>
       {generateResult()}
-      <Button disabled={false} onClick={handleClick}>
+      <Button disabled={false} onClick={backWelcome}>
         Попробовать еще
       </Button>
     </>

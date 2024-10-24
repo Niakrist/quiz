@@ -1,0 +1,36 @@
+.preloader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  width: 96px;
+  height: 24px;
+  margin: 0 auto;
+}
+
+.round1 {
+  width: 14px;
+  height: 14px;
+  animation: bounce 0.6s infinite alternate;
+}
+.round2 {
+  width: 14px;
+  height: 14px;
+  animation: bounce 0.6s infinite alternate;
+  animation-delay: 0.2s;
+}
+.round3 {
+  width: 14px;
+  height: 14px;
+  animation: bounce 0.6s infinite alternate;
+  animation-delay: 0.4s;
+}
+
+@keyframes bounce {
+  0% {
+    transform: translateY(-0px);
+  }
+  100% {
+    transform: translateY(-2px);
+  }
+}

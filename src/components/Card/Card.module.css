@@ -5,9 +5,25 @@
 }
 
 .closeBtn {
+  width: 40px;
+  height: 40px;
+  color: var(--secondaty-color);
   position: absolute;
   top: -92px;
   right: -33px;
+  transition: color 0.25s;
+}
+
+.closeBtn:hover {
+  color: var(--primary-color);
+}
+
+.closeBtn:disabled {
+  background-color: transparent;
+}
+
+.closeBtn:disabled:hover {
+  color: var(--secondaty-color);
 }
 
 .wrapper {

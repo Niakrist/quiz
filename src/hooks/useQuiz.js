@@ -1,7 +1,9 @@
 import { useContext } from "react";
-import { QuizContext } from "../context/QuizContext";
+import { QuizContext } from "@/context";
 
 // Хук для обращения к контексту
-export const useQuiz = () => {
+const useQuiz = () => {
   return useContext(QuizContext);
 };
+
+export default useQuiz;

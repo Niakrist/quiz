@@ -1,6 +1,6 @@
 // Функция для подсчета результатов
-export const calculateScore = (check, score, setScore, curentQuest) => {
-  if (check === curentQuest.correctAnswer) {
+const calculateScore = (check, score, setScore, currentQuestion) => {
+  if (check === currentQuestion.correctAnswer) {
     setScore({
       ...score,
       trueScore: ++score.trueScore,
@@ -14,3 +14,5 @@ export const calculateScore = (check, score, setScore, curentQuest) => {
     });
   }
 };
+
+export default calculateScore;
