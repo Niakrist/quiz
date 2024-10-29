@@ -49,10 +49,10 @@ body {
   min-height: 100vh;
   background: linear-gradient(
     45deg,
-    rgba(18, 83, 101, 1) 0% 40.5%,
-    rgba(223, 76, 37, 1) 40.5% 54.5%,
-    rgba(255, 156, 70, 1) 54.5% 84.5%,
-    rgba(252, 203, 76, 1) 84.5%
+    rgb(18, 83, 101) 0% 40.5%,
+    rgb(255, 112, 63) 40.5% 54.5%,
+    rgb(255, 156, 70) 54.5% 84.5%,
+    rgb(255, 202, 74) 84.5%
   );
   background-repeat: no-repeat;
   background-size: cover;

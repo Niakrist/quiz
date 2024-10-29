@@ -2,7 +2,7 @@ import { IconSvg } from "@/components";
 import { useQuiz } from "@/hooks";
 import styles from "./Counter.module.css";
 
-const Counter = () => {
+const Counter = ({ isLoadingQuiz }) => {
   const { count, handleCount } = useQuiz();
 
   return (
@@ -11,7 +11,7 @@ const Counter = () => {
       <div className={styles.counterQuestion}>
         <button
           className={styles.buttonCount}
-          disabled={count <= 1}
+          disabled={count <= 1 || isLoadingQuiz}
           onClick={() => handleCount(Number(count - 1))}>
           <IconSvg id="plus-svg" />
         </button>
@@ -20,10 +20,11 @@ const Counter = () => {
           type="text"
           value={count}
           onChange={(e) => handleCount(e.target.value)}
+          disabled={isLoadingQuiz}
         />
         <button
           className={styles.buttonCount}
-          disabled={count >= 30}
+          disabled={count >= 30 || isLoadingQuiz}
           onClick={() => handleCount(Number(count) + 1)}>
           <IconSvg id="minus-svg" />
         </button>

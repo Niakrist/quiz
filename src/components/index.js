@@ -1,15 +1,15 @@
-import { Answer } from "./Answer";
-import { Button } from "./Button";
-import { Card } from "./Card";
-import { Counter } from "./Counter";
-import { Footer } from "./Footer";
-import { Header } from "./Header";
-import { IconSvg } from "./IconSvg";
-import { Logo } from "./Logo";
-import { Main } from "./Main";
-import { Question } from "./Question";
-import { RadioButton } from "./RadioButton";
-import { Preloader } from "./Preloader";
+import Answer from "./Answer/Answer";
+import Button from "./Button/Button";
+import Card from "./Card/Card";
+import Counter from "./Counter/Counter";
+import Footer from "./Footer/Footer";
+import Header from "./Header/Header";
+import IconSvg from "./IconSvg/IconSvg";
+import Logo from "./Logo/Logo";
+import Main from "./Main/Main";
+import Question from "./Question/Question";
+import RadioButton from "./RadioButton/RadioButton";
+import Preloader from "./Preloader/Preloader";
 export {
   Answer,
   Button,

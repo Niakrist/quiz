@@ -21,13 +21,15 @@ const WelcomePage = () => {
 
   useKeyPress({ disabled: !count }, handleClick);
 
+  console.log("isLoadingQuiz: ", isLoadingQuiz);
+
   return (
     <section>
       <div className={styles.titleWrapper}>
         <h1 className={styles.title}>Добро пожаловать</h1>
         <p className={styles.text}>на викторину по странам и столицам!</p>
       </div>
-      <Counter />
+      <Counter isLoadingQuiz={isLoadingQuiz} />
       <Button
         disabled={!count || count[0] === "0" || isLoadingQuiz}
         onClick={handleClick}>

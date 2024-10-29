@@ -33,9 +33,13 @@
   color: var(--bg-button-color);
   border-color: var(--bg-button-color);
   caret-color: var(--bg-button-color);
-  /*  caret-width: 2px; */
 }
-/* ff9c46 */
+
+.quantityQuestion:disabled {
+  border: 4px solid var(--primary-color);
+  color: var(--primary-color);
+}
+
 .buttonCount {
   width: 60px;
   height: 60px;

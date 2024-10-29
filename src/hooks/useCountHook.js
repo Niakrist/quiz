@@ -9,7 +9,7 @@ const useCountHook = () => {
     if (num === "") {
       setCount(num);
     }
-    const regEx = /^[0-9\b]+$/;
+    const regEx = /^(?!0)\d+$/;
     if (regEx.test(num)) {
       setCount(num);
       if (num > questions.length) {
