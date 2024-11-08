@@ -1,6 +1,6 @@
 import { Button } from "@/components";
 import { useQuiz, useKeyPress } from "@/hooks";
-import { getEndWordSuccess, getEndWordFail } from "@/utils";
+import { getEndWord } from "@/utils";
 import resultSrc from "@/assets/images/result.png";
 import styles from "./ResultPage.module.css";
 
@@ -26,9 +26,9 @@ const ResultPage = () => {
       <p className={styles.text}>
         Ты ответил правильно <br />
         на <span className={styles.success}>{score.trueScore}</span>
-        {getEndWordSuccess(score.trueScore)}
+        {getEndWord(score.trueScore, true)}
         и сделал <span className={styles.error}>{score.falseScore}</span>{" "}
-        {getEndWordFail(score.falseScore)}.
+        {getEndWord(score.falseScore, false)}.
       </p>
     );
   };

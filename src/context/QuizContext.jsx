@@ -1,5 +1,5 @@
 import { useState, createContext, useRef } from "react";
-import { useChangePage, useCountHook } from "@/hooks";
+import { useChangePage, useCount } from "@/hooks";
 import { getShuffleArray, getCountries, calculateScore } from "@/utils";
 import { countries } from "@/data/quizQuestions.json";
 import { RESULT_PAGE, WELCOME_PAGE } from "../constants";
@@ -7,7 +7,7 @@ import { RESULT_PAGE, WELCOME_PAGE } from "../constants";
 export const QuizContext = createContext();
 
 export const QuizContextProvider = ({ children }) => {
-  const { count, handleCount } = useCountHook();
+  const { count, handleCount } = useCount();
   const { page, handleChangePage } = useChangePage();
   const [questionsList, setQuestionsList] = useState();
   const [isCheckAnswer, setIsCheckAnswer] = useState(false);
@@ -21,6 +21,7 @@ export const QuizContextProvider = ({ children }) => {
     getShuffleArray(countries)
   );
   const [isPreload, setIsPreload] = useState(false);
+  const [isLoadingQuiz, setIsLoadingQuiz] = useState(false);
   const timerIdRef = useRef(null);
 
   const giveAnswer = (currentQuestion) => {
@@ -98,6 +99,8 @@ export const QuizContextProvider = ({ children }) => {
         timerIdRef,
         isPreload,
         setIsPreload,
+        isLoadingQuiz,
+        setIsLoadingQuiz,
       }}>
       {children}
     </QuizContext.Provider>

@@ -3,10 +3,10 @@ import { useQuiz } from "@/hooks";
 
 // Хук для управления с клавиатуры
 const useKeyPress = ({ disabled }, handleClick, currentQuestion) => {
-  const { isCheckAnswer, setCheck, isPreload } = useQuiz();
+  const { isCheckAnswer, setCheck, isPreload, isLoadingQuiz } = useQuiz();
 
   const handleKey = ({ keyCode }) => {
-    if (!disabled) {
+    if (!disabled && !isLoadingQuiz) {
       if (keyCode === 13) {
         handleClick();
       }
@@ -44,7 +44,14 @@ const useKeyPress = ({ disabled }, handleClick, currentQuestion) => {
     return () => {
       window.removeEventListener("keyup", handleKey);
     };
-  }, [disabled, isCheckAnswer, currentQuestion, setCheck, isPreload]);
+  }, [
+    disabled,
+    isCheckAnswer,
+    currentQuestion,
+    setCheck,
+    isPreload,
+    isLoadingQuiz,
+  ]);
 };
 
 export default useKeyPress;

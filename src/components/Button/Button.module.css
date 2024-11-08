@@ -22,6 +22,11 @@ button:disabled {
   background-color: var(--bg-button-disabled-color);
   cursor: no-drop;
 }
+.button:focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
 
 .text {
   font-weight: var(--font-weight-regular);

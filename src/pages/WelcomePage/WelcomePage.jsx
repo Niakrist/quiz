@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Button, Counter, Preloader } from "@/components";
 import { useQuiz, useKeyPress } from "@/hooks";
 import { getShuffleArray } from "@/utils";
@@ -7,8 +6,13 @@ import { questions } from "@/data/quizQuestions.json";
 import styles from "./WelcomePage.module.css";
 
 const WelcomePage = () => {
-  const [isLoadingQuiz, setIsLoadingQuiz] = useState(false);
-  const { count, handleChangePage, setQuestionsList } = useQuiz();
+  const {
+    count,
+    handleChangePage,
+    setQuestionsList,
+    isLoadingQuiz,
+    setIsLoadingQuiz,
+  } = useQuiz();
 
   const handleClick = () => {
     setIsLoadingQuiz(true);
@@ -20,8 +24,6 @@ const WelcomePage = () => {
   };
 
   useKeyPress({ disabled: !count }, handleClick);
-
-  console.log("isLoadingQuiz: ", isLoadingQuiz);
 
   return (
     <section>
