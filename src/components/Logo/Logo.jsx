@@ -1,6 +1,6 @@
 import { useQuiz } from "@/hooks";
-import logoSrc from "@/assets/icons/logo.svg";
 import styles from "./Logo.module.css";
+import Icon from "../Icon/Icon";
 
 const Logo = () => {
   const { backWelcome } = useQuiz();
@@ -10,7 +10,7 @@ const Logo = () => {
   };
   return (
     <a className={styles.logoLink} href="#" onClick={handleClick}>
-      <img src={logoSrc} alt="Логотип игры Quiz по странам и столицам " />
+      <Icon name="logo" className={styles.logo} />
     </a>
   );
 };

@@ -13,7 +13,7 @@
 
 .text {
   margin-bottom: 32px;
-  font-weight: 500;
+  font-weight: var(--font-weight-medium);
   font-size: var(--font-size-text);
   line-height: var(--line-height-small);
   text-align: center;
@@ -28,6 +28,30 @@
 .success {
   color: var(--success-color);
 }
+
 .error {
   color: var(--error-color);
+}
+
+@media (max-width: 767px) {
+  .img {
+    margin-bottom: 16px;
+    width: 163px;
+    height: 163px;
+    object-fit: cover;
+  }
+
+  .title {
+    margin-bottom: 8px;
+    font-weight: var(--font-weight-bold);
+    font-size: var(--font-size-big-mobile);
+    line-height: var(--line-height-medium-mobile);
+  }
+
+  .text {
+    margin-bottom: 16px;
+    font-weight: var(--font-weight-medium);
+    font-size: var(--font-size-text-mobile);
+    line-height: var(--line-height-medium);
+  }
 }

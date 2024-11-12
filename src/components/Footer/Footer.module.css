@@ -35,3 +35,12 @@
   outline-offset: 2px;
   border-radius: 2px;
 }
+
+@media (max-width: 767px) {
+  .footer {
+    font-weight: var(--font-weight-regular);
+    font-size: var(--font-size-small);
+    line-height: var(--line-height-standart);
+    color: var(--secondaty-color);
+  }
+}

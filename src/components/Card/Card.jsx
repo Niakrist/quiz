@@ -1,6 +1,7 @@
 import { Answer, Button, Question, IconSvg } from "@/components";
 import { useCurentQuest, useQuiz, useKeyPress } from "@/hooks";
 import { getNameButton } from "@/utils";
+import Icon from "../Icon/Icon";
 import styles from "./Card.module.css";
 
 const Card = () => {
@@ -33,7 +34,7 @@ const Card = () => {
           className={styles.closeBtn}
           disabled={isPreload}
           onClick={backWelcome}>
-          <IconSvg id={"close-svg"} />
+          <Icon name="close" className={styles.close} />
         </button>
       </div>
       <Answer currentQuestion={currentQuestion} />

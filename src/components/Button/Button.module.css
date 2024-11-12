@@ -6,7 +6,7 @@
   margin-bottom: 8px;
 
   border-radius: var(--border-radius-standart);
-  padding: 24px;
+  /* padding: 24px; */
   width: 270px;
   height: 72px;
   background-color: var(--bg-button-color);
@@ -44,4 +44,27 @@ button:disabled {
 
 span {
   font-weight: var(--font-weight-bold);
+}
+
+@media (max-width: 1023px) {
+  .text,
+  .textDisabled {
+    display: none;
+  }
+  .button {
+    margin-bottom: 0px;
+  }
+}
+
+@media (max-width: 767px) {
+  .button {
+    margin-bottom: 0px;
+    width: 194px;
+    height: 50px;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 1.28571;
+    text-align: center;
+    color: #f1f1ef;
+  }
 }

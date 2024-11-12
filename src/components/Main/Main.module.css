@@ -13,3 +13,15 @@
 .wrapperResult {
   padding: 22px 32px 32px;
 }
+
+@media (max-width: 767px) {
+  .wrapper {
+    width: 343px;
+    padding: 16px;
+    margin-bottom: 8px;
+  }
+
+  /* .wrapperResult {
+    padding-top: 16px;
+  } */
+}

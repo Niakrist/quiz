@@ -13,3 +13,16 @@
   line-height: var(--line-height-small);
   color: var(--primary-color);
 }
+
+@media (max-width: 767px) {
+  .img {
+    width: 72px;
+    height: 48px;
+    margin-bottom: 8px;
+  }
+
+  .title {
+    font-size: var(--font-size-text-mobile);
+    line-height: var(--line-height-medium);
+  }
+}

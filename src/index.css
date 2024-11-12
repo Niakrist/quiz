@@ -45,7 +45,7 @@
 
 body {
   width: 100%;
-  min-width: 1280px;
+  /* min-width: 1280px; */
   min-height: 100vh;
   background: linear-gradient(
     45deg,
@@ -189,4 +189,26 @@ svg * {
 
 #root {
   padding: 10px;
+}
+
+@media (max-width: 1023px) {
+  body {
+    background: linear-gradient(
+      45deg,
+      rgb(18, 83, 101) 0% 34.2%,
+      rgb(255, 112, 63) 34.2% 57.5%,
+      rgb(255, 156, 70) 57.5%
+    );
+  }
+}
+
+@media (max-width: 767px) {
+  body {
+    background: linear-gradient(
+      45deg,
+      rgb(18, 83, 101) 0% 33.7%,
+      rgb(255, 112, 63) 33.7% 58%,
+      rgb(255, 156, 70) 58%
+    );
+  }
 }
