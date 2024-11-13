@@ -1,5 +1,4 @@
-import { IconSvg } from "@/components";
-import Icon from "../Icon/Icon";
+import { Icon } from "@/components";
 import styles from "./Preloader.module.css";
 
 const Preloader = () => {
@@ -8,10 +7,6 @@ const Preloader = () => {
       <Icon name="ellipse" className={styles.round1} />
       <Icon name="ellipse" className={styles.round2} />
       <Icon name="ellipse" className={styles.round3} />
-
-      {/* <IconSvg id="round-svg" className={styles.round1} />
-      <IconSvg id="round-svg" className={styles.round2} />
-      <IconSvg id="round-svg" className={styles.round3} /> */}
     </div>
   );
 };

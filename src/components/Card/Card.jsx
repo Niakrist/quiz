@@ -1,7 +1,6 @@
-import { Answer, Button, Question, IconSvg } from "@/components";
+import { Answer, Button, Question, Icon } from "@/components";
 import { useCurentQuest, useQuiz, useKeyPress } from "@/hooks";
 import { getNameButton } from "@/utils";
-import Icon from "../Icon/Icon";
 import styles from "./Card.module.css";
 
 const Card = () => {

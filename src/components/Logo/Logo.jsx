@@ -1,6 +1,6 @@
+import { Icon } from "@/components";
 import { useQuiz } from "@/hooks";
 import styles from "./Logo.module.css";
-import Icon from "../Icon/Icon";
 
 const Logo = () => {
   const { backWelcome } = useQuiz();
